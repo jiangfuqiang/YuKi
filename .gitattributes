@@ -1,0 +1,2 @@
+YuKi/Resources/MLModels/*.gguf filter=lfs diff=lfs merge=lfs -text
+YuKi/Resources/MLModels/*.bin filter=lfs diff=lfs merge=lfs -text
