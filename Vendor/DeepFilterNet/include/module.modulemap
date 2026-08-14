@@ -1,0 +1,4 @@
+module DeepFilterNet {
+    header "deep_filter.h"
+    export *
+}

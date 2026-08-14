@@ -1,0 +1,1240 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		044F8CE83D5155B7AD50F6C6 /* ChatRecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B923530E775200CBDC65B /* ChatRecordsView.swift */; };
+		0453C00D097E09FDBFB0DF1B /* YuKiLlamaBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = EFB863623D253922F3DFDEF8 /* YuKiLlamaBridge.mm */; };
+		0668D7CBF6332144D464A00F /* QwenLocalEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B73B0143428B1912BA1596 /* QwenLocalEngine.swift */; };
+		073C46C89839C5CD3C52E4F0 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC24537CC73E782C26184FAE /* AppTheme.swift */; };
+		080587AAE228839D3A6CF12C /* YuKiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE035511C6237E04BE245E3 /* YuKiApp.swift */; };
+		15CE3618DF7932349B715DD6 /* OfflineServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6DA5BFBDAA1CB564FCE05 /* OfflineServices.swift */; };
+		19663E883734DD9D199CEEA9 /* ggml-cann.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B612DE4D34FE31A2711FB937 /* ggml-cann.h */; };
+		1F544DB443D9125BFD8C7C45 /* ggml-hexagon.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AF9D569511318B25719E0558 /* ggml-hexagon.h */; };
+		20617B2340E78A1B32BD2B3E /* ggml-alloc.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B75974F437437E1EAC11639 /* ggml-alloc.h */; };
+		218AFE6E0611319B43668E97 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ABF5178E662C603346E097 /* RootView.swift */; };
+		22A73B986E4BD828B8004C31 /* SceneListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB9A36A9A8A3373387C219E /* SceneListView.swift */; };
+		279B618C81005AE408866DE2 /* libDeepFilterNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A27EE9BAD22B698B1E274A1 /* libDeepFilterNet.a */; };
+		2A005BCE3502C056A543B0D4 /* VoiceDenoiseEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0873A1951174C361F92EDB /* VoiceDenoiseEngine.swift */; };
+		32A92AF307F51C3E341B0725 /* gguf.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BFC320B377741C005391B27 /* gguf.h */; };
+		369B8F1F9404E003E1C61EEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE9646599F2205E18A5BA8B4 /* Assets.xcassets */; };
+		3E882D393EC003F4A390BCDD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBF2738E47B2BA34FA3AB86 /* ProfileView.swift */; };
+		3FDD78EAF9829B14630582ED /* SeriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BC99B3AF445A946AFE051 /* SeriesListView.swift */; };
+		4C20E631E461C34540599099 /* ggml-cuda.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4AA0C82FBC85F9205F0DA618 /* ggml-cuda.h */; };
+		4EC2C7C0F125C60F14F68D57 /* AppComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1276704E337F3F04091A08 /* AppComponents.swift */; };
+		4FECDF03743A52E413F3B34C /* YuKiLlamaBridge.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 618827D1E0E237663109EE8F /* YuKiLlamaBridge.h */; };
+		5B05AEF901AC14ECC929F92A /* BuddyEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A842C6B7A46E88920D350A5 /* BuddyEditorView.swift */; };
+		66E3705A651952BD258D2309 /* libWhisperCpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330A4EF20BBB619C937996ED /* libWhisperCpp.a */; };
+		6780BBB1B1429682F854FA35 /* ggml.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 11A87CFE273B60AFE7EAF21C /* ggml.h */; };
+		6B0AA5D76D739BAE693C61DF /* ggml-openvino.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 246E11BF1196C6D1061B214F /* ggml-openvino.h */; };
+		6B5EA024C599AE1574836D4E /* llama.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED8795DB66143662728CECFD /* llama.framework */; };
+		764940901DE0570AE61E5012 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92363C8E77325C66CB9EB2D1 /* module.modulemap */; };
+		7DED89EBFA2780FE8DE6023E /* RecordingCrashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCB1E31652076641C6EFA89 /* RecordingCrashUITests.swift */; };
+		812A405445E253382E6F4982 /* VoiceDenoiseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C15588FD0DC7BFDAADF1657 /* VoiceDenoiseSettings.swift */; };
+		81B8225A86461492650B4901 /* DeepFilterNet3_onnx.tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1557FA6297665CF4D3086 /* DeepFilterNet3_onnx.tar.gz */; };
+		837E8D56C195F86E48C057F6 /* ggml-backend.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D2920282DD1104BA9C4A083 /* ggml-backend.h */; };
+		84222E331EC77BBDA8C019B2 /* Qwen3.5-0.8B-Q4_K_M.gguf in Resources */ = {isa = PBXBuildFile; fileRef = 71FB15C9E3886F394570CF97 /* Qwen3.5-0.8B-Q4_K_M.gguf */; };
+		850AAE84C048209270E1D3D8 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3877751109ECE5726C2181E /* ChatView.swift */; };
+		8B22DE049C8A3DA9E408BEA5 /* ggml-cpu.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E9B287F3AABF32BDA341075C /* ggml-cpu.h */; };
+		8C2F50ECDC3D2DAF2D015A98 /* ggml-zendnn.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F012F056C1C8906B183668C8 /* ggml-zendnn.h */; };
+		8C7F4E5ED234E995BE834E91 /* WhisperTranscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9594729ECC9C352E877A31E /* WhisperTranscriber.swift */; };
+		9A90F61525666D233A3CCCD4 /* ggml-webgpu.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10D8AFCEF02E7D0FF3F699B1 /* ggml-webgpu.h */; };
+		9ACD8DC5F938C71CB6FA25D9 /* ggml-rpc.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E0A6AC619097B6B23B9E0893 /* ggml-rpc.h */; };
+		9E3F7CD097A726B633EB4A33 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = D59DFBFF17C8AE35C16D4A81 /* module.modulemap */; };
+		9F6023F6146D3D682E12C2A1 /* ggml-zdnn.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 031754D59B626272273C1710 /* ggml-zdnn.h */; };
+		A4C607766159367A073A850E /* SessionEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FEAD9E990644E21DE35EF1 /* SessionEndView.swift */; };
+		A622044F7686B3C67BD889F0 /* dummy.c in Sources */ = {isa = PBXBuildFile; fileRef = 5A20E9C7B98614DD667F129D /* dummy.c */; };
+		A6CFBC49BF8E0D94D0ADC88F /* ggml-virtgpu.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 87CAA0B17C9EA3CA335C6D59 /* ggml-virtgpu.h */; };
+		AAB6C624D3688FE0BADE29A6 /* ggml-small-q8_0.bin in Resources */ = {isa = PBXBuildFile; fileRef = 67D4F0B651623064D15B3962 /* ggml-small-q8_0.bin */; };
+		AB64D1DA2D161BD781D17CB5 /* SceneDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247F9E12EFCDD637EB9C09D /* SceneDetailView.swift */; };
+		B14B4618E0F0556D92FE4456 /* ggml-blas.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F342CF7917EB596D3CDB9B27 /* ggml-blas.h */; };
+		B5C2C9A384F06CB26D2B9AE3 /* VoiceDenoiseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2E2EE4CC1A62AB00398CA9 /* VoiceDenoiseProcessor.swift */; };
+		B7CA470B7D0095474162809B /* dummy.c in Sources */ = {isa = PBXBuildFile; fileRef = 59998DFCC248B566F8552D36 /* dummy.c */; };
+		BD34E5C155CAEEDF8CC1578C /* BuddyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C9D14E01CB1D82D627C98 /* BuddyListView.swift */; };
+		C129E20415482C7AE204B021 /* LocalDataMaintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CFC5076AD56B98801A536C /* LocalDataMaintenance.swift */; };
+		C200E45F3226C215606721C9 /* CreateSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221D292EE5039166AE6BDD8 /* CreateSceneViewModel.swift */; };
+		C53318829BDEA56D34E14222 /* ggml-vulkan.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECC519FE144AD8108158EA48 /* ggml-vulkan.h */; };
+		C623192785F3407679E15AD1 /* AppModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35326D52EEF5FBC788F5B91F /* AppModels.swift */; };
+		C8590DDD350D1945464B772A /* ggml-cpp.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C5052F11755DDCEA4302A2B /* ggml-cpp.h */; };
+		CF542181339AEAF0399656D2 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF35ACDADAA83F785FB8570 /* BundleExtension.swift */; };
+		D2F61F1466DF28B1419B8EB1 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8E21297C36F151180780C5BF /* module.modulemap */; };
+		D9F3D833CB7030D763BBD457 /* CreateSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9744218B67C7535200A49BD /* CreateSceneView.swift */; };
+		DCAE9C0C4B5E191CD6150ECB /* whisper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D6D049DEB243C53C5B278325 /* whisper.h */; };
+		E64B7086AF3BA3B4F3F15495 /* ggml-opt.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4A9CD44FEF4D15EDD07CCE2A /* ggml-opt.h */; };
+		E881C785882A55F0A8DE41C9 /* ggml-sycl.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D22ADD3259C58C569B01A654 /* ggml-sycl.h */; };
+		EB928A0A7F3E6FB9C913E916 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646E600AE7B6755F83D1924E /* ChatViewModel.swift */; };
+		EC5AB65B069A9FEDF64CA458 /* llama.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED8795DB66143662728CECFD /* llama.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC5F477C29E460A0B7608446 /* deep_filter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4E459AF04005DCE8F010188A /* deep_filter.h */; };
+		ECAE0C6B25D1308CD1CA2550 /* ggml-metal.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29FCCEF3A7B758DA5FF25481 /* ggml-metal.h */; };
+		F03C3AB55D7B971B150FE782 /* ggml-opencl.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 42CAE5D66D2F4FD07C985517 /* ggml-opencl.h */; };
+		F1865964EDFBAE488106005E /* libLlamaBridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BBCE2D1AA99D90F43CD6863 /* libLlamaBridge.a */; };
+		FD9A72202072E260E543FC51 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A621873B26461D9692A08975 /* SampleData.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		410CE1F1DC7A5E953B8B61BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43860ABF5C67F4A66AFDFF8E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 29176EFBE6DF1D07C0130F8D;
+			remoteInfo = YuKi;
+		};
+		4AEF1C4709369B4CC971F6A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43860ABF5C67F4A66AFDFF8E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FA37F75A6CECD5C278E7D44;
+			remoteInfo = LlamaBridge;
+		};
+		9E8EF040D6FF4BFB6A3F0EDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43860ABF5C67F4A66AFDFF8E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A75671CA768E9D7174FFA811;
+			remoteInfo = DeepFilterNet;
+		};
+		F5BF5BD3A716670FC16062D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43860ABF5C67F4A66AFDFF8E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3ABDEECB072C13D907CCE2F5;
+			remoteInfo = WhisperCpp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7F2FC5FCA87ADA131C4E8AD1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				20617B2340E78A1B32BD2B3E /* ggml-alloc.h in CopyFiles */,
+				837E8D56C195F86E48C057F6 /* ggml-backend.h in CopyFiles */,
+				B14B4618E0F0556D92FE4456 /* ggml-blas.h in CopyFiles */,
+				19663E883734DD9D199CEEA9 /* ggml-cann.h in CopyFiles */,
+				C8590DDD350D1945464B772A /* ggml-cpp.h in CopyFiles */,
+				8B22DE049C8A3DA9E408BEA5 /* ggml-cpu.h in CopyFiles */,
+				4C20E631E461C34540599099 /* ggml-cuda.h in CopyFiles */,
+				1F544DB443D9125BFD8C7C45 /* ggml-hexagon.h in CopyFiles */,
+				ECAE0C6B25D1308CD1CA2550 /* ggml-metal.h in CopyFiles */,
+				F03C3AB55D7B971B150FE782 /* ggml-opencl.h in CopyFiles */,
+				6B0AA5D76D739BAE693C61DF /* ggml-openvino.h in CopyFiles */,
+				E64B7086AF3BA3B4F3F15495 /* ggml-opt.h in CopyFiles */,
+				9ACD8DC5F938C71CB6FA25D9 /* ggml-rpc.h in CopyFiles */,
+				E881C785882A55F0A8DE41C9 /* ggml-sycl.h in CopyFiles */,
+				A6CFBC49BF8E0D94D0ADC88F /* ggml-virtgpu.h in CopyFiles */,
+				C53318829BDEA56D34E14222 /* ggml-vulkan.h in CopyFiles */,
+				9A90F61525666D233A3CCCD4 /* ggml-webgpu.h in CopyFiles */,
+				9F6023F6146D3D682E12C2A1 /* ggml-zdnn.h in CopyFiles */,
+				8C2F50ECDC3D2DAF2D015A98 /* ggml-zendnn.h in CopyFiles */,
+				6780BBB1B1429682F854FA35 /* ggml.h in CopyFiles */,
+				32A92AF307F51C3E341B0725 /* gguf.h in CopyFiles */,
+				D2F61F1466DF28B1419B8EB1 /* module.modulemap in CopyFiles */,
+				DCAE9C0C4B5E191CD6150ECB /* whisper.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83A4093DAFBC47543D771D48 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				4FECDF03743A52E413F3B34C /* YuKiLlamaBridge.h in CopyFiles */,
+				9E3F7CD097A726B633EB4A33 /* module.modulemap in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB4E8760C3806897A250F656 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EC5AB65B069A9FEDF64CA458 /* llama.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C94ECF4E7C83A28CE9497EE1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				EC5F477C29E460A0B7608446 /* deep_filter.h in CopyFiles */,
+				764940901DE0570AE61E5012 /* module.modulemap in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		00ABF5178E662C603346E097 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		031754D59B626272273C1710 /* ggml-zdnn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-zdnn.h"; sourceTree = "<group>"; };
+		0BCB1E31652076641C6EFA89 /* RecordingCrashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingCrashUITests.swift; sourceTree = "<group>"; };
+		0BFC320B377741C005391B27 /* gguf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gguf.h; sourceTree = "<group>"; };
+		10D8AFCEF02E7D0FF3F699B1 /* ggml-webgpu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-webgpu.h"; sourceTree = "<group>"; };
+		11A87CFE273B60AFE7EAF21C /* ggml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ggml.h; sourceTree = "<group>"; };
+		1221D292EE5039166AE6BDD8 /* CreateSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSceneViewModel.swift; sourceTree = "<group>"; };
+		16CFC5076AD56B98801A536C /* LocalDataMaintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataMaintenance.swift; sourceTree = "<group>"; };
+		1B75974F437437E1EAC11639 /* ggml-alloc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-alloc.h"; sourceTree = "<group>"; };
+		246E11BF1196C6D1061B214F /* ggml-openvino.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-openvino.h"; sourceTree = "<group>"; };
+		29FCCEF3A7B758DA5FF25481 /* ggml-metal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-metal.h"; sourceTree = "<group>"; };
+		31FEAD9E990644E21DE35EF1 /* SessionEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionEndView.swift; sourceTree = "<group>"; };
+		330A4EF20BBB619C937996ED /* libWhisperCpp.a */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = archive.ar; path = libWhisperCpp.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		35326D52EEF5FBC788F5B91F /* AppModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModels.swift; sourceTree = "<group>"; };
+		3A27EE9BAD22B698B1E274A1 /* libDeepFilterNet.a */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = archive.ar; path = libDeepFilterNet.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		42CAE5D66D2F4FD07C985517 /* ggml-opencl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-opencl.h"; sourceTree = "<group>"; };
+		430E73FD050E4C89C839EAA2 /* YuKi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuKi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A9CD44FEF4D15EDD07CCE2A /* ggml-opt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-opt.h"; sourceTree = "<group>"; };
+		4AA0C82FBC85F9205F0DA618 /* ggml-cuda.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-cuda.h"; sourceTree = "<group>"; };
+		4B1276704E337F3F04091A08 /* AppComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponents.swift; sourceTree = "<group>"; };
+		4E459AF04005DCE8F010188A /* deep_filter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = deep_filter.h; sourceTree = "<group>"; };
+		4F0B923530E775200CBDC65B /* ChatRecordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRecordsView.swift; sourceTree = "<group>"; };
+		59998DFCC248B566F8552D36 /* dummy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dummy.c; sourceTree = "<group>"; };
+		5A20E9C7B98614DD667F129D /* dummy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dummy.c; sourceTree = "<group>"; };
+		5C5052F11755DDCEA4302A2B /* ggml-cpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-cpp.h"; sourceTree = "<group>"; };
+		5F0873A1951174C361F92EDB /* VoiceDenoiseEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceDenoiseEngine.swift; sourceTree = "<group>"; };
+		618827D1E0E237663109EE8F /* YuKiLlamaBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YuKiLlamaBridge.h; sourceTree = "<group>"; };
+		646E600AE7B6755F83D1924E /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		67D4F0B651623064D15B3962 /* ggml-small-q8_0.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "ggml-small-q8_0.bin"; sourceTree = "<group>"; };
+		71FB15C9E3886F394570CF97 /* Qwen3.5-0.8B-Q4_K_M.gguf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Qwen3.5-0.8B-Q4_K_M.gguf"; sourceTree = "<group>"; };
+		79B73B0143428B1912BA1596 /* QwenLocalEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QwenLocalEngine.swift; sourceTree = "<group>"; };
+		87CAA0B17C9EA3CA335C6D59 /* ggml-virtgpu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-virtgpu.h"; sourceTree = "<group>"; };
+		8A842C6B7A46E88920D350A5 /* BuddyEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyEditorView.swift; sourceTree = "<group>"; };
+		8BD1557FA6297665CF4D3086 /* DeepFilterNet3_onnx.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = DeepFilterNet3_onnx.tar.gz; sourceTree = "<group>"; };
+		8E21297C36F151180780C5BF /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		92363C8E77325C66CB9EB2D1 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		9BBCE2D1AA99D90F43CD6863 /* libLlamaBridge.a */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = archive.ar; path = libLlamaBridge.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BF326F5413346A30C589452 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9C15588FD0DC7BFDAADF1657 /* VoiceDenoiseSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceDenoiseSettings.swift; sourceTree = "<group>"; };
+		9D2920282DD1104BA9C4A083 /* ggml-backend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-backend.h"; sourceTree = "<group>"; };
+		A621873B26461D9692A08975 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		AB0C9D14E01CB1D82D627C98 /* BuddyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyListView.swift; sourceTree = "<group>"; };
+		AC24537CC73E782C26184FAE /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		AF9D569511318B25719E0558 /* ggml-hexagon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-hexagon.h"; sourceTree = "<group>"; };
+		B3877751109ECE5726C2181E /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		B612DE4D34FE31A2711FB937 /* ggml-cann.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-cann.h"; sourceTree = "<group>"; };
+		B9594729ECC9C352E877A31E /* WhisperTranscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperTranscriber.swift; sourceTree = "<group>"; };
+		BE9646599F2205E18A5BA8B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C1B6DA5BFBDAA1CB564FCE05 /* OfflineServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineServices.swift; sourceTree = "<group>"; };
+		CD2E2EE4CC1A62AB00398CA9 /* VoiceDenoiseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceDenoiseProcessor.swift; sourceTree = "<group>"; };
+		D22ADD3259C58C569B01A654 /* ggml-sycl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-sycl.h"; sourceTree = "<group>"; };
+		D59DFBFF17C8AE35C16D4A81 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		D6D049DEB243C53C5B278325 /* whisper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = whisper.h; sourceTree = "<group>"; };
+		D9744218B67C7535200A49BD /* CreateSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSceneView.swift; sourceTree = "<group>"; };
+		DAF758F13E2ED54135059AA5 /* YuKiUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = YuKiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDBF2738E47B2BA34FA3AB86 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E0A6AC619097B6B23B9E0893 /* ggml-rpc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-rpc.h"; sourceTree = "<group>"; };
+		E27BC99B3AF445A946AFE051 /* SeriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListView.swift; sourceTree = "<group>"; };
+		E9B287F3AABF32BDA341075C /* ggml-cpu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-cpu.h"; sourceTree = "<group>"; };
+		ECC519FE144AD8108158EA48 /* ggml-vulkan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-vulkan.h"; sourceTree = "<group>"; };
+		ED8795DB66143662728CECFD /* llama.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = llama.framework; path = Vendor/Llama/llama.framework; sourceTree = "<group>"; };
+		EFB863623D253922F3DFDEF8 /* YuKiLlamaBridge.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = YuKiLlamaBridge.mm; sourceTree = "<group>"; };
+		EFF35ACDADAA83F785FB8570 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
+		F012F056C1C8906B183668C8 /* ggml-zendnn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-zendnn.h"; sourceTree = "<group>"; };
+		F247F9E12EFCDD637EB9C09D /* SceneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDetailView.swift; sourceTree = "<group>"; };
+		F342CF7917EB596D3CDB9B27 /* ggml-blas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-blas.h"; sourceTree = "<group>"; };
+		FBE035511C6237E04BE245E3 /* YuKiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YuKiApp.swift; sourceTree = "<group>"; };
+		FDB9A36A9A8A3373387C219E /* SceneListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneListView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		602CD4D26EAA0EB8CF45DE3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E3705A651952BD258D2309 /* libWhisperCpp.a in Frameworks */,
+				279B618C81005AE408866DE2 /* libDeepFilterNet.a in Frameworks */,
+				F1865964EDFBAE488106005E /* libLlamaBridge.a in Frameworks */,
+				6B5EA024C599AE1574836D4E /* llama.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0684507EDEFCEC941992AFA8 /* Buddies */ = {
+			isa = PBXGroup;
+			children = (
+				8A842C6B7A46E88920D350A5 /* BuddyEditorView.swift */,
+				AB0C9D14E01CB1D82D627C98 /* BuddyListView.swift */,
+			);
+			path = Buddies;
+			sourceTree = "<group>";
+		};
+		07E12BEE05020032459CF59E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EFB863623D253922F3DFDEF8 /* YuKiLlamaBridge.mm */,
+			);
+			name = src;
+			path = Vendor/LlamaBridge/src;
+			sourceTree = "<group>";
+		};
+		09DF53A4D4FDBAF20E76733A /* include */ = {
+			isa = PBXGroup;
+			children = (
+				D59DFBFF17C8AE35C16D4A81 /* module.modulemap */,
+				618827D1E0E237663109EE8F /* YuKiLlamaBridge.h */,
+			);
+			name = include;
+			path = Vendor/LlamaBridge/include;
+			sourceTree = "<group>";
+		};
+		18DC3C9CCDEFF8D07A5996C1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8BD1557FA6297665CF4D3086 /* DeepFilterNet3_onnx.tar.gz */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1F95D97393BE8F0B147E6920 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BC1E98CBA0768538C8337572 /* MLModels */,
+				18DC3C9CCDEFF8D07A5996C1 /* Models */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		30E3272A7674564D1ACCB174 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				646E600AE7B6755F83D1924E /* ChatViewModel.swift */,
+				1221D292EE5039166AE6BDD8 /* CreateSceneViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		33949DF7710BDD23B9489E95 /* LLM */ = {
+			isa = PBXGroup;
+			children = (
+				79B73B0143428B1912BA1596 /* QwenLocalEngine.swift */,
+			);
+			path = LLM;
+			sourceTree = "<group>";
+		};
+		3C335EF943C088A994AE4FB0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A27EE9BAD22B698B1E274A1 /* libDeepFilterNet.a */,
+				9BBCE2D1AA99D90F43CD6863 /* libLlamaBridge.a */,
+				330A4EF20BBB619C937996ED /* libWhisperCpp.a */,
+				430E73FD050E4C89C839EAA2 /* YuKi.app */,
+				DAF758F13E2ED54135059AA5 /* YuKiUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3CCDC01C6F5609C403B477F9 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				4E459AF04005DCE8F010188A /* deep_filter.h */,
+				92363C8E77325C66CB9EB2D1 /* module.modulemap */,
+			);
+			name = include;
+			path = Vendor/DeepFilterNet/include;
+			sourceTree = "<group>";
+		};
+		5429406E4067BC8A10F60847 /* YuKiUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0BCB1E31652076641C6EFA89 /* RecordingCrashUITests.swift */,
+			);
+			path = YuKiUITests;
+			sourceTree = "<group>";
+		};
+		59CE0155335D3E109C5F7924 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4B1276704E337F3F04091A08 /* AppComponents.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		62ABD80677719A9CFB44F175 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0684507EDEFCEC941992AFA8 /* Buddies */,
+				59CE0155335D3E109C5F7924 /* Components */,
+				DDA6CBA3319F50F70AB24322 /* Profile */,
+				B49ECDBC368B36DA976C9B01 /* Scenes */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6F14DAEC4C7C565122568FA1 /* YuKi */ = {
+			isa = PBXGroup;
+			children = (
+				BE9646599F2205E18A5BA8B4 /* Assets.xcassets */,
+				9BF326F5413346A30C589452 /* Info.plist */,
+				BA3CA40C2681AA16912C064D /* App */,
+				FB534F0A9D506DA6974987B3 /* DesignSystem */,
+				BDCE99175AF4D2C48CB95659 /* Models */,
+				1F95D97393BE8F0B147E6920 /* Resources */,
+				9754B494F53277E080E0D233 /* Services */,
+				30E3272A7674564D1ACCB174 /* ViewModels */,
+				62ABD80677719A9CFB44F175 /* Views */,
+			);
+			path = YuKi;
+			sourceTree = "<group>";
+		};
+		7FD18DE222780024B343012C /* Speech */ = {
+			isa = PBXGroup;
+			children = (
+				EFF35ACDADAA83F785FB8570 /* BundleExtension.swift */,
+				5F0873A1951174C361F92EDB /* VoiceDenoiseEngine.swift */,
+				CD2E2EE4CC1A62AB00398CA9 /* VoiceDenoiseProcessor.swift */,
+				9C15588FD0DC7BFDAADF1657 /* VoiceDenoiseSettings.swift */,
+				B9594729ECC9C352E877A31E /* WhisperTranscriber.swift */,
+			);
+			path = Speech;
+			sourceTree = "<group>";
+		};
+		8B49FB8804F39BF36BEC4ED8 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				1B75974F437437E1EAC11639 /* ggml-alloc.h */,
+				9D2920282DD1104BA9C4A083 /* ggml-backend.h */,
+				F342CF7917EB596D3CDB9B27 /* ggml-blas.h */,
+				B612DE4D34FE31A2711FB937 /* ggml-cann.h */,
+				5C5052F11755DDCEA4302A2B /* ggml-cpp.h */,
+				E9B287F3AABF32BDA341075C /* ggml-cpu.h */,
+				4AA0C82FBC85F9205F0DA618 /* ggml-cuda.h */,
+				AF9D569511318B25719E0558 /* ggml-hexagon.h */,
+				29FCCEF3A7B758DA5FF25481 /* ggml-metal.h */,
+				42CAE5D66D2F4FD07C985517 /* ggml-opencl.h */,
+				246E11BF1196C6D1061B214F /* ggml-openvino.h */,
+				4A9CD44FEF4D15EDD07CCE2A /* ggml-opt.h */,
+				E0A6AC619097B6B23B9E0893 /* ggml-rpc.h */,
+				D22ADD3259C58C569B01A654 /* ggml-sycl.h */,
+				87CAA0B17C9EA3CA335C6D59 /* ggml-virtgpu.h */,
+				ECC519FE144AD8108158EA48 /* ggml-vulkan.h */,
+				10D8AFCEF02E7D0FF3F699B1 /* ggml-webgpu.h */,
+				031754D59B626272273C1710 /* ggml-zdnn.h */,
+				F012F056C1C8906B183668C8 /* ggml-zendnn.h */,
+				11A87CFE273B60AFE7EAF21C /* ggml.h */,
+				0BFC320B377741C005391B27 /* gguf.h */,
+				8E21297C36F151180780C5BF /* module.modulemap */,
+				D6D049DEB243C53C5B278325 /* whisper.h */,
+			);
+			name = include;
+			path = Vendor/WhisperCpp/include;
+			sourceTree = "<group>";
+		};
+		9754B494F53277E080E0D233 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C1B6DA5BFBDAA1CB564FCE05 /* OfflineServices.swift */,
+				33949DF7710BDD23B9489E95 /* LLM */,
+				7FD18DE222780024B343012C /* Speech */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AC4C033A064EB0E1B513A779 = {
+			isa = PBXGroup;
+			children = (
+				3CCDC01C6F5609C403B477F9 /* include */,
+				09DF53A4D4FDBAF20E76733A /* include */,
+				8B49FB8804F39BF36BEC4ED8 /* include */,
+				EC094D1423D41330CBD08411 /* src */,
+				07E12BEE05020032459CF59E /* src */,
+				ED433ED4FA30AFA3394F982E /* src */,
+				6F14DAEC4C7C565122568FA1 /* YuKi */,
+				5429406E4067BC8A10F60847 /* YuKiUITests */,
+				E5DBFD38BCAC4C09EBADD664 /* Frameworks */,
+				3C335EF943C088A994AE4FB0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B49ECDBC368B36DA976C9B01 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				4F0B923530E775200CBDC65B /* ChatRecordsView.swift */,
+				B3877751109ECE5726C2181E /* ChatView.swift */,
+				D9744218B67C7535200A49BD /* CreateSceneView.swift */,
+				F247F9E12EFCDD637EB9C09D /* SceneDetailView.swift */,
+				FDB9A36A9A8A3373387C219E /* SceneListView.swift */,
+				E27BC99B3AF445A946AFE051 /* SeriesListView.swift */,
+				31FEAD9E990644E21DE35EF1 /* SessionEndView.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		BA3CA40C2681AA16912C064D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				00ABF5178E662C603346E097 /* RootView.swift */,
+				FBE035511C6237E04BE245E3 /* YuKiApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BC1E98CBA0768538C8337572 /* MLModels */ = {
+			isa = PBXGroup;
+			children = (
+				67D4F0B651623064D15B3962 /* ggml-small-q8_0.bin */,
+				71FB15C9E3886F394570CF97 /* Qwen3.5-0.8B-Q4_K_M.gguf */,
+			);
+			path = MLModels;
+			sourceTree = "<group>";
+		};
+		BDCE99175AF4D2C48CB95659 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				35326D52EEF5FBC788F5B91F /* AppModels.swift */,
+				16CFC5076AD56B98801A536C /* LocalDataMaintenance.swift */,
+				A621873B26461D9692A08975 /* SampleData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DDA6CBA3319F50F70AB24322 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DDBF2738E47B2BA34FA3AB86 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		E5DBFD38BCAC4C09EBADD664 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED8795DB66143662728CECFD /* llama.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EC094D1423D41330CBD08411 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				59998DFCC248B566F8552D36 /* dummy.c */,
+			);
+			name = src;
+			path = Vendor/DeepFilterNet/src;
+			sourceTree = "<group>";
+		};
+		ED433ED4FA30AFA3394F982E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				5A20E9C7B98614DD667F129D /* dummy.c */,
+			);
+			name = src;
+			path = Vendor/WhisperCpp/src;
+			sourceTree = "<group>";
+		};
+		FB534F0A9D506DA6974987B3 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				AC24537CC73E782C26184FAE /* AppTheme.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		29176EFBE6DF1D07C0130F8D /* YuKi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32D2CDC6C10A93819FD80F7C /* Build configuration list for PBXNativeTarget "YuKi" */;
+			buildPhases = (
+				9F693BD0486F8D4097BAA9CD /* Sources */,
+				3D0DFE1908176315924D77CE /* Resources */,
+				602CD4D26EAA0EB8CF45DE3A /* Frameworks */,
+				BB4E8760C3806897A250F656 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				809EE76B968750BB8D368B50 /* PBXTargetDependency */,
+				0F32F6E2E57BF3F3549D8956 /* PBXTargetDependency */,
+				9285B4459C022BBC091BA88E /* PBXTargetDependency */,
+			);
+			name = YuKi;
+			packageProductDependencies = (
+			);
+			productName = YuKi;
+			productReference = 430E73FD050E4C89C839EAA2 /* YuKi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3ABDEECB072C13D907CCE2F5 /* WhisperCpp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCFB154FA51F09AB66C1264E /* Build configuration list for PBXNativeTarget "WhisperCpp" */;
+			buildPhases = (
+				7F2FC5FCA87ADA131C4E8AD1 /* CopyFiles */,
+				4EF16EC35B0409138AB6AF30 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WhisperCpp;
+			packageProductDependencies = (
+			);
+			productName = WhisperCpp;
+			productReference = 330A4EF20BBB619C937996ED /* libWhisperCpp.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		4250E321B408563598066B0F /* YuKiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E00D7D7105F328663CCF284D /* Build configuration list for PBXNativeTarget "YuKiUITests" */;
+			buildPhases = (
+				AFEFE0C7EA0D2203DF50230F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				610C2A7D78CB222DB044E2A7 /* PBXTargetDependency */,
+			);
+			name = YuKiUITests;
+			packageProductDependencies = (
+			);
+			productName = YuKiUITests;
+			productReference = DAF758F13E2ED54135059AA5 /* YuKiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		4FA37F75A6CECD5C278E7D44 /* LlamaBridge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D67AB282E278D1AA43419AA /* Build configuration list for PBXNativeTarget "LlamaBridge" */;
+			buildPhases = (
+				83A4093DAFBC47543D771D48 /* CopyFiles */,
+				8539DCF6DF181BF6904C7F77 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LlamaBridge;
+			packageProductDependencies = (
+			);
+			productName = LlamaBridge;
+			productReference = 9BBCE2D1AA99D90F43CD6863 /* libLlamaBridge.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		A75671CA768E9D7174FFA811 /* DeepFilterNet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30994960BF487402E405B4CA /* Build configuration list for PBXNativeTarget "DeepFilterNet" */;
+			buildPhases = (
+				C94ECF4E7C83A28CE9497EE1 /* CopyFiles */,
+				DA54B3C3710996280E7A9FC4 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DeepFilterNet;
+			packageProductDependencies = (
+			);
+			productName = DeepFilterNet;
+			productReference = 3A27EE9BAD22B698B1E274A1 /* libDeepFilterNet.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		43860ABF5C67F4A66AFDFF8E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					29176EFBE6DF1D07C0130F8D = {
+						ProvisioningStyle = Automatic;
+					};
+					3ABDEECB072C13D907CCE2F5 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					4250E321B408563598066B0F = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+						TestTargetID = 29176EFBE6DF1D07C0130F8D;
+					};
+					4FA37F75A6CECD5C278E7D44 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					A75671CA768E9D7174FFA811 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8B74BA32BAD5D5D30282F120 /* Build configuration list for PBXProject "YuKi" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = AC4C033A064EB0E1B513A779;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 3C335EF943C088A994AE4FB0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A75671CA768E9D7174FFA811 /* DeepFilterNet */,
+				4FA37F75A6CECD5C278E7D44 /* LlamaBridge */,
+				3ABDEECB072C13D907CCE2F5 /* WhisperCpp */,
+				29176EFBE6DF1D07C0130F8D /* YuKi */,
+				4250E321B408563598066B0F /* YuKiUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D0DFE1908176315924D77CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				369B8F1F9404E003E1C61EEC /* Assets.xcassets in Resources */,
+				81B8225A86461492650B4901 /* DeepFilterNet3_onnx.tar.gz in Resources */,
+				84222E331EC77BBDA8C019B2 /* Qwen3.5-0.8B-Q4_K_M.gguf in Resources */,
+				AAB6C624D3688FE0BADE29A6 /* ggml-small-q8_0.bin in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4EF16EC35B0409138AB6AF30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A622044F7686B3C67BD889F0 /* dummy.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8539DCF6DF181BF6904C7F77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0453C00D097E09FDBFB0DF1B /* YuKiLlamaBridge.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F693BD0486F8D4097BAA9CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EC2C7C0F125C60F14F68D57 /* AppComponents.swift in Sources */,
+				C623192785F3407679E15AD1 /* AppModels.swift in Sources */,
+				073C46C89839C5CD3C52E4F0 /* AppTheme.swift in Sources */,
+				5B05AEF901AC14ECC929F92A /* BuddyEditorView.swift in Sources */,
+				BD34E5C155CAEEDF8CC1578C /* BuddyListView.swift in Sources */,
+				CF542181339AEAF0399656D2 /* BundleExtension.swift in Sources */,
+				044F8CE83D5155B7AD50F6C6 /* ChatRecordsView.swift in Sources */,
+				850AAE84C048209270E1D3D8 /* ChatView.swift in Sources */,
+				EB928A0A7F3E6FB9C913E916 /* ChatViewModel.swift in Sources */,
+				D9F3D833CB7030D763BBD457 /* CreateSceneView.swift in Sources */,
+				C200E45F3226C215606721C9 /* CreateSceneViewModel.swift in Sources */,
+				C129E20415482C7AE204B021 /* LocalDataMaintenance.swift in Sources */,
+				15CE3618DF7932349B715DD6 /* OfflineServices.swift in Sources */,
+				3E882D393EC003F4A390BCDD /* ProfileView.swift in Sources */,
+				0668D7CBF6332144D464A00F /* QwenLocalEngine.swift in Sources */,
+				218AFE6E0611319B43668E97 /* RootView.swift in Sources */,
+				FD9A72202072E260E543FC51 /* SampleData.swift in Sources */,
+				AB64D1DA2D161BD781D17CB5 /* SceneDetailView.swift in Sources */,
+				22A73B986E4BD828B8004C31 /* SceneListView.swift in Sources */,
+				3FDD78EAF9829B14630582ED /* SeriesListView.swift in Sources */,
+				A4C607766159367A073A850E /* SessionEndView.swift in Sources */,
+				2A005BCE3502C056A543B0D4 /* VoiceDenoiseEngine.swift in Sources */,
+				B5C2C9A384F06CB26D2B9AE3 /* VoiceDenoiseProcessor.swift in Sources */,
+				812A405445E253382E6F4982 /* VoiceDenoiseSettings.swift in Sources */,
+				8C7F4E5ED234E995BE834E91 /* WhisperTranscriber.swift in Sources */,
+				080587AAE228839D3A6CF12C /* YuKiApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFEFE0C7EA0D2203DF50230F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DED89EBFA2780FE8DE6023E /* RecordingCrashUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA54B3C3710996280E7A9FC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7CA470B7D0095474162809B /* dummy.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0F32F6E2E57BF3F3549D8956 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A75671CA768E9D7174FFA811 /* DeepFilterNet */;
+			targetProxy = 9E8EF040D6FF4BFB6A3F0EDE /* PBXContainerItemProxy */;
+		};
+		610C2A7D78CB222DB044E2A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 29176EFBE6DF1D07C0130F8D /* YuKi */;
+			targetProxy = 410CE1F1DC7A5E953B8B61BB /* PBXContainerItemProxy */;
+		};
+		809EE76B968750BB8D368B50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3ABDEECB072C13D907CCE2F5 /* WhisperCpp */;
+			targetProxy = F5BF5BD3A716670FC16062D0 /* PBXContainerItemProxy */;
+		};
+		9285B4459C022BBC091BA88E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4FA37F75A6CECD5C278E7D44 /* LlamaBridge */;
+			targetProxy = 4AEF1C4709369B4CC971F6A6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		407E02134F687009480437B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Vendor/DeepFilterNet/include";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MODULEMAP_FILE = "$(PROJECT_DIR)/Vendor/DeepFilterNet/include/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = com.localfirst.DeepFilterNet;
+				PRODUCT_MODULE_NAME = DeepFilterNet;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		409012272C8CF79C59410CAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Vendor/WhisperCpp/include";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MODULEMAP_FILE = "$(PROJECT_DIR)/Vendor/WhisperCpp/include/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = com.localfirst.WhisperCpp;
+				PRODUCT_MODULE_NAME = WhisperCpp;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		44B22AD36769200055E23897 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Vendor/DeepFilterNet/include";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MODULEMAP_FILE = "$(PROJECT_DIR)/Vendor/DeepFilterNet/include/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = com.localfirst.DeepFilterNet;
+				PRODUCT_MODULE_NAME = DeepFilterNet;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		52A0628367A1AEFAB20E1543 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6824CHVK65;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Vendor/Llama",
+					"\"Vendor/Llama\"",
+				);
+				INFOPLIST_FILE = YuKi/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = YuKi;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "需要使用麦克风进行口语对话";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "需要将你的语音转换为文字";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Vendor/WhisperCpp/lib-ios",
+					"$(PROJECT_DIR)/Vendor/DeepFilterNet/lib-ios",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lwhisper",
+					"-lggml",
+					"-lggml-base",
+					"-lggml-cpu",
+					"-lggml-blas",
+					"-lggml-metal",
+					"-ldf",
+					"-lc++",
+					"-framework",
+					Accelerate,
+					"-framework",
+					Metal,
+					"-framework",
+					MetalKit,
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.localfirst.yuki;
+				PRODUCT_NAME = YuKi;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		53165127BED5A50770C5CC68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		5BE82E53A666A2B483B95C0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		6C93632C54CCA6393ED46D06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.localfirst.yuki.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = YuKi;
+			};
+			name = Debug;
+		};
+		75B7ABE60FEAAE47B79FE3AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Vendor/WhisperCpp/include";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MODULEMAP_FILE = "$(PROJECT_DIR)/Vendor/WhisperCpp/include/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = com.localfirst.WhisperCpp;
+				PRODUCT_MODULE_NAME = WhisperCpp;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A842C88D590A5E6FBF223661 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Vendor/Llama";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Vendor/LlamaBridge/include";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MODULEMAP_FILE = "$(PROJECT_DIR)/Vendor/LlamaBridge/include/module.modulemap";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					llama,
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.localfirst.LlamaBridge;
+				PRODUCT_MODULE_NAME = LlamaBridge;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B8F257F2EBDFD710031D2942 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Vendor/Llama";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Vendor/LlamaBridge/include";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MODULEMAP_FILE = "$(PROJECT_DIR)/Vendor/LlamaBridge/include/module.modulemap";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					llama,
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.localfirst.LlamaBridge;
+				PRODUCT_MODULE_NAME = LlamaBridge;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CCEC4B6B7D71C2A5C8EFD6D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6824CHVK65;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Vendor/Llama",
+					"\"Vendor/Llama\"",
+				);
+				INFOPLIST_FILE = YuKi/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = YuKi;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "需要使用麦克风进行口语对话";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "需要将你的语音转换为文字";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Vendor/WhisperCpp/lib-ios",
+					"$(PROJECT_DIR)/Vendor/DeepFilterNet/lib-ios",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lwhisper",
+					"-lggml",
+					"-lggml-base",
+					"-lggml-cpu",
+					"-lggml-blas",
+					"-lggml-metal",
+					"-ldf",
+					"-lc++",
+					"-framework",
+					Accelerate,
+					"-framework",
+					Metal,
+					"-framework",
+					MetalKit,
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.localfirst.yuki;
+				PRODUCT_NAME = YuKi;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CE7552DAE643960803AB0DF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.localfirst.yuki.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = YuKi;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		30994960BF487402E405B4CA /* Build configuration list for PBXNativeTarget "DeepFilterNet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44B22AD36769200055E23897 /* Debug */,
+				407E02134F687009480437B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		32D2CDC6C10A93819FD80F7C /* Build configuration list for PBXNativeTarget "YuKi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCEC4B6B7D71C2A5C8EFD6D3 /* Debug */,
+				52A0628367A1AEFAB20E1543 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8B74BA32BAD5D5D30282F120 /* Build configuration list for PBXProject "YuKi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BE82E53A666A2B483B95C0F /* Debug */,
+				53165127BED5A50770C5CC68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9D67AB282E278D1AA43419AA /* Build configuration list for PBXNativeTarget "LlamaBridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8F257F2EBDFD710031D2942 /* Debug */,
+				A842C88D590A5E6FBF223661 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E00D7D7105F328663CCF284D /* Build configuration list for PBXNativeTarget "YuKiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C93632C54CCA6393ED46D06 /* Debug */,
+				CE7552DAE643960803AB0DF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FCFB154FA51F09AB66C1264E /* Build configuration list for PBXNativeTarget "WhisperCpp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75B7ABE60FEAAE47B79FE3AD /* Debug */,
+				409012272C8CF79C59410CAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 43860ABF5C67F4A66AFDFF8E /* Project object */;
+}

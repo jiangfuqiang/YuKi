@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# 构建与调试临时产物（含 DerivedData、复现脚本、本地 llama.cpp 克隆）
+.build/
+
+# Xcode 用户状态
+xcuserdata/
+*.xcuserstate
+
+# 大模型文件（本地保留，不进版本库）
+YuKi/Resources/MLModels/*.gguf
+YuKi/Resources/MLModels/*.bin
