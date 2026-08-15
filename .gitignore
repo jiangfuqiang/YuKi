@@ -4,6 +4,9 @@
 # 构建与调试临时产物（含 DerivedData、复现脚本、本地 llama.cpp 克隆）
 .build/
 
+# 本地模型备份（回滚用，不进版本库）
+ModelBackup/
+
 # Xcode 用户状态
 xcuserdata/
 *.xcuserstate

@@ -28,6 +28,7 @@
 		4EC2C7C0F125C60F14F68D57 /* AppComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1276704E337F3F04091A08 /* AppComponents.swift */; };
 		4FECDF03743A52E413F3B34C /* YuKiLlamaBridge.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 618827D1E0E237663109EE8F /* YuKiLlamaBridge.h */; };
 		5B05AEF901AC14ECC929F92A /* BuddyEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A842C6B7A46E88920D350A5 /* BuddyEditorView.swift */; };
+		5E60712D423A82D7ED754170 /* Qwen3.5-2B-Q4_K_M.gguf in Resources */ = {isa = PBXBuildFile; fileRef = FAA3D82E1D0712ACF899CB2E /* Qwen3.5-2B-Q4_K_M.gguf */; };
 		66E3705A651952BD258D2309 /* libWhisperCpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330A4EF20BBB619C937996ED /* libWhisperCpp.a */; };
 		6780BBB1B1429682F854FA35 /* ggml.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 11A87CFE273B60AFE7EAF21C /* ggml.h */; };
 		6B0AA5D76D739BAE693C61DF /* ggml-openvino.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 246E11BF1196C6D1061B214F /* ggml-openvino.h */; };
@@ -37,7 +38,6 @@
 		812A405445E253382E6F4982 /* VoiceDenoiseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C15588FD0DC7BFDAADF1657 /* VoiceDenoiseSettings.swift */; };
 		81B8225A86461492650B4901 /* DeepFilterNet3_onnx.tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1557FA6297665CF4D3086 /* DeepFilterNet3_onnx.tar.gz */; };
 		837E8D56C195F86E48C057F6 /* ggml-backend.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D2920282DD1104BA9C4A083 /* ggml-backend.h */; };
-		84222E331EC77BBDA8C019B2 /* Qwen3.5-0.8B-Q4_K_M.gguf in Resources */ = {isa = PBXBuildFile; fileRef = 71FB15C9E3886F394570CF97 /* Qwen3.5-0.8B-Q4_K_M.gguf */; };
 		850AAE84C048209270E1D3D8 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3877751109ECE5726C2181E /* ChatView.swift */; };
 		8B22DE049C8A3DA9E408BEA5 /* ggml-cpu.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E9B287F3AABF32BDA341075C /* ggml-cpu.h */; };
 		8C2F50ECDC3D2DAF2D015A98 /* ggml-zendnn.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F012F056C1C8906B183668C8 /* ggml-zendnn.h */; };
@@ -206,7 +206,6 @@
 		618827D1E0E237663109EE8F /* YuKiLlamaBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YuKiLlamaBridge.h; sourceTree = "<group>"; };
 		646E600AE7B6755F83D1924E /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		67D4F0B651623064D15B3962 /* ggml-small-q8_0.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "ggml-small-q8_0.bin"; sourceTree = "<group>"; };
-		71FB15C9E3886F394570CF97 /* Qwen3.5-0.8B-Q4_K_M.gguf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Qwen3.5-0.8B-Q4_K_M.gguf"; sourceTree = "<group>"; };
 		79B73B0143428B1912BA1596 /* QwenLocalEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QwenLocalEngine.swift; sourceTree = "<group>"; };
 		87CAA0B17C9EA3CA335C6D59 /* ggml-virtgpu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-virtgpu.h"; sourceTree = "<group>"; };
 		8A842C6B7A46E88920D350A5 /* BuddyEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyEditorView.swift; sourceTree = "<group>"; };
@@ -243,6 +242,7 @@
 		F012F056C1C8906B183668C8 /* ggml-zendnn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-zendnn.h"; sourceTree = "<group>"; };
 		F247F9E12EFCDD637EB9C09D /* SceneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDetailView.swift; sourceTree = "<group>"; };
 		F342CF7917EB596D3CDB9B27 /* ggml-blas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-blas.h"; sourceTree = "<group>"; };
+		FAA3D82E1D0712ACF899CB2E /* Qwen3.5-2B-Q4_K_M.gguf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Qwen3.5-2B-Q4_K_M.gguf"; sourceTree = "<group>"; };
 		FBE035511C6237E04BE245E3 /* YuKiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YuKiApp.swift; sourceTree = "<group>"; };
 		FDB9A36A9A8A3373387C219E /* SceneListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -486,7 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				67D4F0B651623064D15B3962 /* ggml-small-q8_0.bin */,
-				71FB15C9E3886F394570CF97 /* Qwen3.5-0.8B-Q4_K_M.gguf */,
+				FAA3D82E1D0712ACF899CB2E /* Qwen3.5-2B-Q4_K_M.gguf */,
 			);
 			path = MLModels;
 			sourceTree = "<group>";
@@ -702,7 +702,7 @@
 			files = (
 				369B8F1F9404E003E1C61EEC /* Assets.xcassets in Resources */,
 				81B8225A86461492650B4901 /* DeepFilterNet3_onnx.tar.gz in Resources */,
-				84222E331EC77BBDA8C019B2 /* Qwen3.5-0.8B-Q4_K_M.gguf in Resources */,
+				5E60712D423A82D7ED754170 /* Qwen3.5-2B-Q4_K_M.gguf in Resources */,
 				AAB6C624D3688FE0BADE29A6 /* ggml-small-q8_0.bin in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

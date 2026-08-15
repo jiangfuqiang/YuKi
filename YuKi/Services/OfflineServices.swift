@@ -10,8 +10,31 @@ protocol LocalLLMResponding: Sendable {
 }
 
 protocol SpeechSynthesizing: Sendable {
-    func speak(_ text: String, language: String) async
+    func speak(_ text: String, language: String, voiceIdentifier: String?, preset: VoicePreset) async
     func stop()
+}
+
+/// Lists the system voices installed on device for a given scene language.
+/// Users can download higher-quality voices in iOS Settings; those show up
+/// here automatically with an "增强" marker.
+enum VoiceCatalog {
+    struct Voice: Identifiable, Sendable {
+        let id: String
+        let name: String
+        let isEnhancedQuality: Bool
+    }
+
+    static func voices(for language: String) -> [Voice] {
+        let locale = SystemTTSService.locale(for: language)
+        let exact = AVSpeechSynthesisVoice.speechVoices().filter { $0.language == locale }
+        let candidates = exact.isEmpty
+            ? AVSpeechSynthesisVoice.speechVoices().filter { $0.language.hasPrefix(locale.prefix(2)) }
+            : exact
+        return candidates.map {
+            Voice(id: $0.identifier, name: $0.name,
+                  isEnhancedQuality: $0.quality == .enhanced || $0.quality == .premium)
+        }
+    }
 }
 
 struct SceneContext: Sendable {
@@ -295,6 +318,8 @@ private final class LLMCompletionGate: @unchecked Sendable {
 
 @MainActor
 final class SystemTTSService: NSObject, SpeechSynthesizing, AVSpeechSynthesizerDelegate {
+    static let shared = SystemTTSService()
+
     private let synthesizer = AVSpeechSynthesizer()
 
     override init() {
@@ -302,12 +327,17 @@ final class SystemTTSService: NSObject, SpeechSynthesizing, AVSpeechSynthesizerD
         synthesizer.delegate = self
     }
 
-    func speak(_ text: String, language: String) async {
+    func speak(_ text: String, language: String, voiceIdentifier: String? = nil, preset: VoicePreset = .natural) async {
         let spokenText = Self.textForSpeech(from: text)
         guard !spokenText.isEmpty else { return }
         let utterance = AVSpeechUtterance(string: spokenText)
-        utterance.voice = AVSpeechSynthesisVoice(language: Self.locale(for: language))
-        utterance.rate = 0.47
+        if let voiceIdentifier, let chosen = AVSpeechSynthesisVoice(identifier: voiceIdentifier) {
+            utterance.voice = chosen
+        } else {
+            utterance.voice = AVSpeechSynthesisVoice(language: Self.locale(for: language))
+        }
+        utterance.rate = preset.rate
+        utterance.pitchMultiplier = preset.pitch
         synthesizer.speak(utterance)
     }
 
@@ -328,7 +358,7 @@ final class SystemTTSService: NSObject, SpeechSynthesizing, AVSpeechSynthesizerD
             .trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    private static func locale(for language: String) -> String {
+    nonisolated static func locale(for language: String) -> String {
         switch language {
         case "日本語": "ja-JP"
         case "한국어": "ko-KR"

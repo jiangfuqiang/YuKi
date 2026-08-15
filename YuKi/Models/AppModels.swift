@@ -32,6 +32,34 @@ enum CorrectionLevel: String, Codable, CaseIterable, Identifiable {
 
 enum MessageRole: String, Codable { case user, assistant }
 
+/// TTS voice presets built from pitch/rate on top of any system voice, so a
+/// buddy can sound different without downloading extra voices.
+enum VoicePreset: String, Codable, CaseIterable, Identifiable {
+    case natural, bright, calm
+    var id: String { rawValue }
+    var title: String {
+        switch self {
+        case .natural: "自然"
+        case .bright: "明亮"
+        case .calm: "沉稳"
+        }
+    }
+    var pitch: Float {
+        switch self {
+        case .natural: 1.0
+        case .bright: 1.18
+        case .calm: 0.85
+        }
+    }
+    var rate: Float {
+        switch self {
+        case .natural: 0.47
+        case .bright: 0.5
+        case .calm: 0.44
+        }
+    }
+}
+
 /// Self-assessed proficiency for a scene. Only a coarse hint for the prompt:
 /// the small model follows "match the user's level" far more reliably than it
 /// can estimate the level by itself.
@@ -126,10 +154,15 @@ final class Buddy {
     var relationshipRaw: String
     var personality: String
     var correctionLevelRaw: String
+    /// AVSpeechSynthesisVoice identifier; nil means the system default voice.
+    var voiceIdentifier: String?
+    /// VoicePreset raw value; nil means natural.
+    var voicePresetRaw: String?
     var createdAt: Date
 
     init(id: UUID = UUID(), name: String, avatar: String = "person.crop.circle.fill", language: String,
          relationship: BuddyRelationship, personality: String, correctionLevel: CorrectionLevel,
+         voiceIdentifier: String? = nil, voicePreset: VoicePreset? = nil,
          createdAt: Date = .now) {
         self.id = id
         self.name = name
@@ -138,6 +171,8 @@ final class Buddy {
         self.relationshipRaw = relationship.rawValue
         self.personality = personality
         self.correctionLevelRaw = correctionLevel.rawValue
+        self.voiceIdentifier = voiceIdentifier
+        self.voicePresetRaw = voicePreset?.rawValue
         self.createdAt = createdAt
     }
 
@@ -148,6 +183,10 @@ final class Buddy {
     var correctionLevel: CorrectionLevel {
         get { CorrectionLevel(rawValue: correctionLevelRaw) ?? .moderate }
         set { correctionLevelRaw = newValue.rawValue }
+    }
+    var voicePreset: VoicePreset {
+        get { VoicePreset(rawValue: voicePresetRaw ?? "") ?? .natural }
+        set { voicePresetRaw = newValue.rawValue }
     }
 }
 

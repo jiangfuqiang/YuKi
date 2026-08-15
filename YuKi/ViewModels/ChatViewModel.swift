@@ -166,7 +166,7 @@ final class ChatViewModel: ObservableObject {
             isThinking = false
             let defaults = UserDefaults.standard
             let shouldSpeak = defaults.object(forKey: "autoTTS") == nil || defaults.bool(forKey: "autoTTS")
-            if shouldSpeak { await tts.speak(response.content, language: scene.language) }
+            if shouldSpeak { await tts.speak(response.content, language: scene.language, voiceIdentifier: buddy?.voiceIdentifier, preset: buddy?.voicePreset ?? .natural) }
         } catch is CancellationError {
             isThinking = false
         } catch {

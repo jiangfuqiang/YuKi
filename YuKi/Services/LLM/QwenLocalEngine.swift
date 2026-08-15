@@ -93,10 +93,14 @@ final class QwenLocalEngine: @unchecked Sendable {
     }
 
     static var bundledModelURL: URL? {
-        Bundle.main.url(
-            forResource: "Qwen3.5-0.8B-Q4_K_M",
-            withExtension: "gguf",
-            subdirectory: "MLModels"
-        ) ?? Bundle.main.url(forResource: "Qwen3.5-0.8B-Q4_K_M", withExtension: "gguf")
+        // Preferred order: the larger model wins when both are bundled, so a
+        // rollback is just a matter of swapping the gguf file in MLModels.
+        for name in ["Qwen3.5-2B-Q4_K_M", "Qwen3.5-0.8B-Q4_K_M"] {
+            if let url = Bundle.main.url(forResource: name, withExtension: "gguf", subdirectory: "MLModels")
+                ?? Bundle.main.url(forResource: name, withExtension: "gguf") {
+                return url
+            }
+        }
+        return nil
     }
 }
