@@ -17,7 +17,9 @@ struct ChatView: View {
                     LazyVStack(spacing: 14) {
                         sceneContext
                         ForEach(model.messages) { message in
-                            MessageBubble(message: message, buddyName: buddy?.name ?? "AI", playback: playback, showsCorrection: false)
+                            MessageBubble(message: message, buddyName: buddy?.name ?? "AI", playback: playback, showsCorrection: false,
+                                          isSpeaking: model.speakingMessageID == message.id,
+                                          onToggleSpeech: message.role == .assistant ? { model.toggleReplyAudio(message, scene: scene, buddy: buddy) } : nil)
                                 .id(message.id)
                                 .transition(.opacity.combined(with: .move(edge: .bottom)))
                         }
@@ -216,6 +218,9 @@ struct MessageBubble: View {
     /// Mid-chat bubbles hide corrections so practice is never interrupted;
     /// transcript/record views keep them visible.
     var showsCorrection = true
+    /// Assistant-reply TTS replay; nil hides the button (e.g. transcripts).
+    var isSpeaking = false
+    var onToggleSpeech: (() -> Void)?
 
     var body: some View {
         HStack(alignment: .bottom, spacing: 9) {
@@ -232,6 +237,14 @@ struct MessageBubble: View {
                 }
                 HStack(spacing: 5) {
                     Text(message.timestamp.formatted(date: .omitted, time: .shortened)).font(.caption2).foregroundStyle(.white.opacity(0.34))
+                    if let onToggleSpeech {
+                        Button(action: onToggleSpeech) {
+                            Image(systemName: isSpeaking ? "stop.circle.fill" : "speaker.wave.2.fill")
+                                .font(.caption).foregroundStyle(.white.opacity(0.62))
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel(isSpeaking ? "停止朗读" : "朗读回复")
+                    }
                     if let audioPath = message.audioPath {
                         Button { playback.toggle(path: audioPath) } label: {
                             Image(systemName: playback.playingPath == audioPath ? "stop.circle.fill" : "speaker.wave.2.fill")

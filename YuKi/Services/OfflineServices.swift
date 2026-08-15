@@ -177,10 +177,6 @@ struct LocalLLMAdapter: LocalLLMResponding {
         if !scene.recentMistakes.isEmpty {
             guidance += "用户最近的常见表达问题：\(scene.recentMistakes.joined(separator: "；"))。在自然对话中创造机会让用户再次练习这些表达，但不要提及你在刻意复习。\n"
         }
-        if !scene.grammarHints.isEmpty {
-            guidance += "本轮表达检测提示：\(scene.grammarHints.joined(separator: "；"))。若确认存在问题，按纠错规则记录，并在回复中自然示范正确说法。\n"
-        }
-
         let system = """
         <|im_start|>system
         你是\(scene.buddyName)，用户的\(scene.relationship.title)和私人聊天搭子，性格\(scene.personality)。
@@ -197,9 +193,17 @@ struct LocalLLMAdapter: LocalLLMResponding {
             return "<|im_start|>\(role)\n\(sanitize(turn.content))<|im_end|>\n"
         }.joined()
 
+        // Grammar hints ride inside the user turn (suffix side) so the system
+        // prompt + history prefix stays byte-identical across turns, which is
+        // what makes the bridge's KV-cache prefix reuse effective.
+        var userContent = sanitize(text)
+        if !scene.grammarHints.isEmpty {
+            userContent += "\n（表达检测提示：\(scene.grammarHints.joined(separator: "；"))。若确认存在问题，按规则记录并自然示范正确说法。）"
+        }
+
         return system + history + """
         <|im_start|>user
-        \(sanitize(text))<|im_end|>
+        \(userContent)<|im_end|>
         <|im_start|>assistant
         <think>
 
@@ -321,15 +325,19 @@ final class SystemTTSService: NSObject, SpeechSynthesizing, AVSpeechSynthesizerD
     static let shared = SystemTTSService()
 
     private let synthesizer = AVSpeechSynthesizer()
+    private var utteranceContinuation: CheckedContinuation<Void, Never>?
 
     override init() {
         super.init()
         synthesizer.delegate = self
     }
 
+    /// Awaits the utterance finishing (or being cancelled), so callers can
+    /// keep an accurate "speaking" state for the UI.
     func speak(_ text: String, language: String, voiceIdentifier: String? = nil, preset: VoicePreset = .natural) async {
         let spokenText = Self.textForSpeech(from: text)
         guard !spokenText.isEmpty else { return }
+        if synthesizer.isSpeaking || synthesizer.isPaused { synthesizer.stopSpeaking(at: .immediate) }
         let utterance = AVSpeechUtterance(string: spokenText)
         if let voiceIdentifier, let chosen = AVSpeechSynthesisVoice(identifier: voiceIdentifier) {
             utterance.voice = chosen
@@ -338,13 +346,31 @@ final class SystemTTSService: NSObject, SpeechSynthesizing, AVSpeechSynthesizerD
         }
         utterance.rate = preset.rate
         utterance.pitchMultiplier = preset.pitch
-        synthesizer.speak(utterance)
+        await withCheckedContinuation { continuation in
+            utteranceContinuation = continuation
+            synthesizer.speak(utterance)
+        }
     }
 
     nonisolated func stop() {
         Task { @MainActor in
             synthesizer.stopSpeaking(at: .immediate)
+            finishUtterance()
         }
+    }
+
+    private func finishUtterance() {
+        let continuation = utteranceContinuation
+        utteranceContinuation = nil
+        continuation?.resume()
+    }
+
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        Task { @MainActor in finishUtterance() }
+    }
+
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+        Task { @MainActor in finishUtterance() }
     }
 
     /// AVSpeechSynthesizer reads emoji accessibility names aloud (often in

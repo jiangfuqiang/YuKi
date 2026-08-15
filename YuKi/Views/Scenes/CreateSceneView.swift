@@ -6,7 +6,11 @@ struct CreateSceneView: View {
     @Environment(\.modelContext) private var context
     @Query(sort: \Buddy.createdAt) private var buddies: [Buddy]
     @Query(sort: \Series.createdAt) private var series: [Series]
-    @StateObject private var model = CreateSceneViewModel()
+    @StateObject private var model: CreateSceneViewModel
+
+    init(presetSeriesID: UUID? = nil) {
+        _model = StateObject(wrappedValue: CreateSceneViewModel(presetSeriesID: presetSeriesID))
+    }
 
     private var compatibleBuddies: [Buddy] { buddies.filter { $0.language == model.language } }
 
@@ -156,7 +160,7 @@ struct CreateSceneView: View {
                 Text("填写后 AI 会按流程自然推进对话，不容易跑偏。")
                     .font(.caption).foregroundStyle(AppTheme.secondaryText)
             }
-            if !series.isEmpty {
+            if !series.isEmpty && model.presetSeriesID == nil {
                 SectionLabel(title: "加入系列（可选）")
                 Picker("系列", selection: $model.selectedSeriesID) {
                     Text("不加入系列").tag(UUID?.none)

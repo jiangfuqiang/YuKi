@@ -135,12 +135,15 @@ final class Series {
     @Attribute(.unique) var id: UUID
     var name: String
     var sceneIds: [UUID]
+    /// Optional user-picked cover photo (JPEG, downscaled on import).
+    @Attribute(.externalStorage) var coverImageData: Data?
     var createdAt: Date
 
-    init(id: UUID = UUID(), name: String, sceneIds: [UUID] = [], createdAt: Date = .now) {
+    init(id: UUID = UUID(), name: String, sceneIds: [UUID] = [], coverImageData: Data? = nil, createdAt: Date = .now) {
         self.id = id
         self.name = name
         self.sceneIds = sceneIds
+        self.coverImageData = coverImageData
         self.createdAt = createdAt
     }
 }

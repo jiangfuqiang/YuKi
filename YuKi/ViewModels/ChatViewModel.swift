@@ -10,6 +10,8 @@ final class ChatViewModel: ObservableObject {
     @Published var draft = ""
     @Published var errorMessage: String?
     @Published private(set) var isStartingRecording = false
+    /// The assistant message currently being read aloud via the replay button.
+    @Published private(set) var speakingMessageID: UUID?
 
     let recorder = AudioRecorder()
     private let transcriber: SpeechTranscribing
@@ -19,6 +21,10 @@ final class ChatViewModel: ObservableObject {
     private(set) var session: ChatSession?
     private var context: ModelContext?
     private var responseTask: Task<Void, Never>?
+    /// Mistakes are frozen when the session begins: injecting newly recorded
+    /// corrections mid-session would change the system prompt and defeat the
+    /// bridge's KV-cache prefix reuse. Fresh mistakes apply from the next chat.
+    private var sessionMistakes: [String] = []
 
     init(transcriber: SpeechTranscribing = WhisperKitAdapter(), llm: LocalLLMResponding = LocalLLMAdapter(), tts: SpeechSynthesizing = SystemTTSService()) {
         self.transcriber = transcriber
@@ -36,6 +42,7 @@ final class ChatViewModel: ObservableObject {
             Task { @MainActor in self?.elapsedSeconds += 1 }
         }
         let welcome = Self.welcomeMessage(language: scene.language)
+        sessionMistakes = recentMistakes(for: scene)
         add(role: .assistant, content: welcome)
     }
 
@@ -48,6 +55,7 @@ final class ChatViewModel: ObservableObject {
             // Starting to record must cut off any AI reply still being spoken,
             // otherwise TTS leaks into the microphone and pollutes transcription.
             tts.stop()
+            speakingMessageID = nil
             isStartingRecording = true
             responseTask = Task {
                 defer { isStartingRecording = false }
@@ -74,6 +82,8 @@ final class ChatViewModel: ObservableObject {
     func end(scene: Scene) {
         responseTask?.cancel()
         isStartingRecording = false
+        tts.stop()
+        speakingMessageID = nil
         if recorder.isRecording, let abandonedURL = recorder.stop() {
             try? FileManager.default.removeItem(at: abandonedURL)
         }
@@ -88,6 +98,8 @@ final class ChatViewModel: ObservableObject {
     func leaveWithoutSummary(scene: Scene) {
         responseTask?.cancel()
         isStartingRecording = false
+        tts.stop()
+        speakingMessageID = nil
         if recorder.isRecording, let abandonedURL = recorder.stop() {
             try? FileManager.default.removeItem(at: abandonedURL)
         }
@@ -113,10 +125,14 @@ final class ChatViewModel: ObservableObject {
     private func processAudio(_ url: URL, scene: Scene, buddy: Buddy?) async {
         isThinking = true
         do {
-            // Qwen and Whisper are both large GGML models. Keep peak memory
-            // bounded by unloading Qwen before speech recognition; Whisper is
-            // released by its adapter before Qwen is loaded again.
-            await QwenLocalEngine.shared.releaseModel()
+            // Qwen and Whisper are both large GGML models. On devices with
+            // limited RAM, keep peak memory bounded by unloading Qwen before
+            // speech recognition (Whisper is released by its adapter before
+            // Qwen is loaded again). On roomier devices, keep Qwen loaded:
+            // a per-turn 2B reload costs seconds and discards the KV cache.
+            if ProcessInfo.processInfo.physicalMemory < 6 * 1024 * 1024 * 1024 {
+                await QwenLocalEngine.shared.releaseModel()
+            }
             let text = try await transcriber.transcribe(audioURL: url, language: scene.language)
             try Task.checkCancellation()
             guard !text.isEmpty else {
@@ -158,7 +174,7 @@ final class ChatViewModel: ObservableObject {
                                             aiRole: scene.aiRole ?? "",
                                             level: scene.level ?? "",
                                             goals: scene.goals ?? "",
-                                            recentMistakes: recentMistakes(for: scene),
+                                            recentMistakes: sessionMistakes,
                                             grammarHints: GrammarHintEngine.hints(for: text, language: scene.language))
             let response = try await llm.respond(to: text, scene: sceneContext)
             try Task.checkCancellation()
@@ -172,6 +188,22 @@ final class ChatViewModel: ObservableObject {
         } catch {
             isThinking = false
             errorMessage = "AI 搭子暂时无法回应：\(error.localizedDescription)"
+        }
+    }
+
+    /// Replays (or stops) an assistant reply aloud with the buddy's voice.
+    func toggleReplyAudio(_ message: Message, scene: Scene, buddy: Buddy?) {
+        if speakingMessageID == message.id {
+            tts.stop()
+            speakingMessageID = nil
+            return
+        }
+        speakingMessageID = message.id
+        Task {
+            await tts.speak(message.content, language: scene.language,
+                            voiceIdentifier: buddy?.voiceIdentifier,
+                            preset: buddy?.voicePreset ?? .natural)
+            if speakingMessageID == message.id { speakingMessageID = nil }
         }
     }
 

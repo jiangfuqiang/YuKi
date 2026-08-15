@@ -18,10 +18,15 @@ final class CreateSceneViewModel: ObservableObject {
     @Published var level: SceneLevel?
     @Published var goals = ""
     @Published var selectedSeriesID: UUID?
+    /// Set when the scene is created from inside a series; the series picker is
+    /// then hidden because membership is already decided.
+    let presetSeriesID: UUID?
 
     let languages = ["English", "日本語", "한국어", "中文", "Français", "Español"]
 
-    init() {
+    init(presetSeriesID: UUID? = nil) {
+        self.presetSeriesID = presetSeriesID
+        self.selectedSeriesID = presetSeriesID
         let stored = UserDefaults.standard.string(forKey: "defaultSceneLanguage")
         let supportedLanguages = ["English", "日本語", "한국어", "中文", "Français", "Español"]
         if let stored, supportedLanguages.contains(stored) {

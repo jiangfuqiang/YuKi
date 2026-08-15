@@ -16,6 +16,9 @@ struct yuki_llama_context {
     llama_context * context = nullptr;
     const llama_vocab * vocabulary = nullptr;
     llama_sampler * sampler = nullptr;
+    // Tokens guaranteed to occupy the KV cache (the latest prompt). Generated
+    // tokens may still sit behind them and are trimmed before the next decode.
+    std::vector<llama_token> kv_tokens;
 };
 
 static std::once_flag backend_once;
@@ -110,15 +113,32 @@ void yuki_llama_destroy(yuki_llama_context * state) {
 char * yuki_llama_generate(yuki_llama_context * state, const char * prompt, int32_t maximum_tokens) {
     if (!state || !prompt || maximum_tokens <= 0) { return nullptr; }
     const auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(55);
-    llama_memory_clear(llama_get_memory(state->context), true);
     llama_sampler_reset(state->sampler);
 
     std::vector<llama_token> prompt_tokens = tokenize(state->vocabulary, prompt);
     if (prompt_tokens.empty() || prompt_tokens.size() + static_cast<size_t>(maximum_tokens) >= llama_n_ctx(state->context)) {
         return nullptr;
     }
-    llama_batch batch = llama_batch_get_one(prompt_tokens.data(), static_cast<int32_t>(prompt_tokens.size()));
-    if (llama_decode(state->context, batch) != 0) { return nullptr; }
+
+    // Reuse the KV cache across turns. Within a session the prompt grows
+    // append-only (system + history + new user turn), so only the suffix
+    // beyond the shared prefix needs decoding instead of the whole prompt.
+    size_t common = 0;
+    while (common < state->kv_tokens.size() && common < prompt_tokens.size()
+           && state->kv_tokens[common] == prompt_tokens[common]) { ++common; }
+    // Drop everything past the shared prefix: stale generated tokens from the
+    // previous turn and any history that no longer matches.
+    if (!llama_memory_seq_rm(llama_get_memory(state->context), 0, static_cast<llama_pos>(common), -1)) {
+        llama_memory_clear(llama_get_memory(state->context), true);
+        common = 0;
+    }
+    state->kv_tokens.resize(common);
+    const int32_t suffix_count = static_cast<int32_t>(prompt_tokens.size() - common);
+    if (suffix_count > 0) {
+        llama_batch batch = llama_batch_get_one(prompt_tokens.data() + common, suffix_count);
+        if (llama_decode(state->context, batch) != 0) { return nullptr; }
+    }
+    state->kv_tokens = prompt_tokens;
     // The penalties sampler only sees tokens passed through accept(). Feed the
     // prompt in as well, otherwise the repetition penalty window is empty at
     // the start of every turn and the model freely re-asks questions it
@@ -135,7 +155,7 @@ char * yuki_llama_generate(yuki_llama_context * state, const char * prompt, int3
         if (llama_vocab_is_eog(state->vocabulary, token)) { break; }
         output += token_piece(state->vocabulary, token);
         llama_token next = token;
-        batch = llama_batch_get_one(&next, 1);
+        llama_batch batch = llama_batch_get_one(&next, 1);
         if (llama_decode(state->context, batch) != 0) { return nullptr; }
     }
     if (output.empty()) { return nullptr; }

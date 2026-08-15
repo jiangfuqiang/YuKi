@@ -6,7 +6,7 @@ struct RootView: View {
     var body: some View {
         TabView(selection: $selection) {
             NavigationStack { SceneListView() }
-                .tabItem { Label("场景", systemImage: "house.fill") }
+                .tabItem { Label("系列", systemImage: "house.fill") }
                 .tag(0)
             NavigationStack { BuddyListView() }
                 .tabItem { Label("搭子", systemImage: "figure.2") }
