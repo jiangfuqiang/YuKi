@@ -23,6 +23,20 @@ struct SceneContext: Sendable {
     let personality: String
     let correctionLevel: CorrectionLevel
     let recentMessages: [DialogueTurn]
+    /// Optional scene flow ("打招呼 → 点饮料 → 结账"); empty when not set.
+    let flow: String
+    /// The user's role inside the scene; empty when not set.
+    let userRole: String
+    /// The role the buddy plays inside the scene; empty when not set.
+    let aiRole: String
+    /// SceneLevel raw value; empty when not specified.
+    let level: String
+    /// What the user wants to practice; empty when not set.
+    let goals: String
+    /// Recent recurring mistakes from earlier sessions ("原句→更好的表达").
+    let recentMistakes: [String]
+    /// Deterministic grammar hints produced on-device for the current input.
+    let grammarHints: [String]
 }
 
 struct DialogueTurn: Sendable {
@@ -115,11 +129,33 @@ struct LocalLLMAdapter: LocalLLMResponding {
         let correctionInstruction: String
         switch scene.correctionLevel {
         case .light:
-            correctionInstruction = "只有用户表达会造成误解时才纠正。"
+            correctionInstruction = "不纠正用户表达，不要输出[[correction]]标记。"
         case .moderate:
-            correctionInstruction = "本轮有明显表达问题时，最多纠正一处。"
+            correctionInstruction = "仅在用户的表达会造成误解时，记录最值得注意的一处。"
         case .detailed:
-            correctionInstruction = "纠正本轮最值得改进的一处表达，但不要讲语法课。"
+            correctionInstruction = "本轮有值得改进的表达时，记录最值得改进的一处。"
+        }
+
+        var guidance = ""
+        if !scene.aiRole.isEmpty || !scene.userRole.isEmpty {
+            let ai = scene.aiRole.isEmpty ? "聊天搭子" : scene.aiRole
+            let user = scene.userRole.isEmpty ? "用户自己" : scene.userRole
+            guidance += "在本场景中，你扮演\(ai)，用户扮演\(user)，全程保持这个角色设定。\n"
+        }
+        if let level = SceneLevel(rawValue: scene.level) {
+            guidance += "用户的\(scene.language)水平约为\(level.rawValue)（\(level.title)）。用词、句长和话题深度都要匹配这个水平。\n"
+        }
+        if !scene.goals.isEmpty {
+            guidance += "用户想重点练习：\(scene.goals)。在对话中自然创造相关的练习机会。\n"
+        }
+        if !scene.flow.isEmpty {
+            guidance += "场景流程参考：\(scene.flow)。跟随对话进度自然推进流程。\n"
+        }
+        if !scene.recentMistakes.isEmpty {
+            guidance += "用户最近的常见表达问题：\(scene.recentMistakes.joined(separator: "；"))。在自然对话中创造机会让用户再次练习这些表达，但不要提及你在刻意复习。\n"
+        }
+        if !scene.grammarHints.isEmpty {
+            guidance += "本轮表达检测提示：\(scene.grammarHints.joined(separator: "；"))。若确认存在问题，按纠错规则记录，并在回复中自然示范正确说法。\n"
         }
 
         let system = """
@@ -128,7 +164,7 @@ struct LocalLLMAdapter: LocalLLMResponding {
         场景资料：“\(scene.name)”；\(scene.description.isEmpty ? "自由聊天。" : scene.description) 场景资料只用于理解，绝不向用户复述。
         这是沉浸式真实对话，不是语言课程。先结合场景和最近对话理解用户此刻真正想做什么；如果用户让你扮演某个角色或帮他做某件事，立即进入该角色并配合。
         必须记住并遵守对话里已经确认的每项事实、偏好和选择，不遗漏、不冲突，也不要再次询问已经回答过的问题。直接回答用户最后一条消息中的实际问题，给出具体、可执行的回应，并自然推进一步。不要只回复“可以、不错、推荐试试”等空话，不安排课程或任务。只用\(scene.language)，通常回复2至3句。
-        \(correctionInstruction) 如需纠错，在回复末尾另起一行输出[[correction]]更自然的表达[[/correction]]，只写表达本身，不要引用原句、不要解释、不要换行；无需纠错则不要输出标记。
+        \(guidance)\(correctionInstruction) 如需记录，在回复末尾另起一行，只输出一行[[correction]]用户的原句→更自然的表达[[/correction]]，不要解释、不要换行、不要输出其他标记；纠错记录不会在对话中打断用户，回复正文里不要提及纠错。
         只输出给用户看的回复，不要JSON、Markdown、分析过程、说明、emoji、表情符号或颜文字。
         <|im_end|>
         """

@@ -17,7 +17,7 @@ struct ChatView: View {
                     LazyVStack(spacing: 14) {
                         sceneContext
                         ForEach(model.messages) { message in
-                            MessageBubble(message: message, buddyName: buddy?.name ?? "AI", playback: playback)
+                            MessageBubble(message: message, buddyName: buddy?.name ?? "AI", playback: playback, showsCorrection: false)
                                 .id(message.id)
                                 .transition(.opacity.combined(with: .move(edge: .bottom)))
                         }
@@ -105,11 +105,25 @@ struct ChatView: View {
             Text(model.errorMessage ?? "")
         }
         .fullScreenCover(isPresented: $model.showsEnd) {
-            SessionEndView(scene: scene, messageCount: model.messages.count, elapsedSeconds: model.elapsedSeconds) {
+            SessionEndView(scene: scene, messageCount: model.messages.count, elapsedSeconds: model.elapsedSeconds,
+                           mistakes: sessionMistakes) {
                 model.resume(scene: scene)
             } exit: { dismiss() }
         }
         .appBackground()
+    }
+
+    /// Corrections are collected silently during the chat and only surface here,
+    /// capped by the buddy's correction level, so practice is never interrupted.
+    private var sessionMistakes: [String] {
+        let limit: Int
+        switch buddy?.correctionLevel ?? .moderate {
+        case .light: limit = 0
+        case .moderate: limit = 2
+        case .detailed: limit = 5
+        }
+        guard limit > 0 else { return [] }
+        return Array(model.messages.compactMap(\.correction).filter { !$0.isEmpty }.prefix(limit))
     }
 
     private var sceneContext: some View {
@@ -199,6 +213,9 @@ struct MessageBubble: View {
     let message: Message
     let buddyName: String
     @ObservedObject var playback: AudioPlaybackService
+    /// Mid-chat bubbles hide corrections so practice is never interrupted;
+    /// transcript/record views keep them visible.
+    var showsCorrection = true
 
     var body: some View {
         HStack(alignment: .bottom, spacing: 9) {
@@ -206,7 +223,7 @@ struct MessageBubble: View {
             if message.role == .user { Spacer(minLength: 48) }
             VStack(alignment: .leading, spacing: 8) {
                 Text(message.content).font(.system(size: 15)).lineSpacing(3)
-                if let correction = message.correction {
+                if showsCorrection, let correction = message.correction {
                     Divider().overlay(Color.white.opacity(0.12))
                     HStack(alignment: .top, spacing: 6) {
                         Image(systemName: "sparkles").font(.caption).foregroundStyle(AppTheme.purpleLight)

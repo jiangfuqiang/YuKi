@@ -126,6 +126,36 @@ struct CreateSceneView: View {
                 TextEditor(text: $model.description)
                     .scrollContentBackground(.hidden).frame(minHeight: 170).padding(10)
             }.appCard(cornerRadius: 16)
+            VStack(alignment: .leading, spacing: 10) {
+                SectionLabel(title: "角色设定（可选）")
+                TextField("你的角色，例如：顾客、面试者", text: $model.userRole)
+                    .padding(16).appCard(cornerRadius: 13)
+                TextField("AI 扮演的角色，例如：店员、面试官", text: $model.aiRole)
+                    .padding(16).appCard(cornerRadius: 13)
+            }
+            VStack(alignment: .leading, spacing: 10) {
+                SectionLabel(title: "你的水平（可选）")
+                Picker("水平", selection: $model.level) {
+                    Text("不指定").tag(SceneLevel?.none)
+                    ForEach(SceneLevel.allCases) { level in
+                        Text("\(level.rawValue) · \(level.title)").tag(Optional(level))
+                    }
+                }.pickerStyle(.menu).frame(maxWidth: .infinity, alignment: .leading).padding(12).appCard(cornerRadius: 13)
+                Text("AI 会按你的水平调整用词和句子难度。")
+                    .font(.caption).foregroundStyle(AppTheme.secondaryText)
+            }
+            VStack(alignment: .leading, spacing: 10) {
+                SectionLabel(title: "想重点练习什么（可选）")
+                TextField("例如：点餐用语、过去时、自我介绍", text: $model.goals)
+                    .padding(16).appCard(cornerRadius: 13)
+            }
+            VStack(alignment: .leading, spacing: 10) {
+                SectionLabel(title: "场景流程（可选）")
+                TextField("例如：打招呼 → 点饮料 → 点主食 → 结账", text: $model.flow)
+                    .padding(16).appCard(cornerRadius: 13)
+                Text("填写后 AI 会按流程自然推进对话，不容易跑偏。")
+                    .font(.caption).foregroundStyle(AppTheme.secondaryText)
+            }
             if !series.isEmpty {
                 SectionLabel(title: "加入系列（可选）")
                 Picker("系列", selection: $model.selectedSeriesID) {

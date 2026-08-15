@@ -13,6 +13,18 @@ struct SceneDetailView: View {
     private var buddy: Buddy? { buddies.first { $0.id == scene.buddyId } }
     private var sessionCount: Int { sessions.filter { $0.sceneId == scene.id }.count }
 
+    /// One-line summary of the optional structured scene details, shown under
+    /// the description when any of them is set.
+    private var sceneDetailText: String? {
+        var parts: [String] = []
+        if let aiRole = scene.aiRole, !aiRole.isEmpty { parts.append("AI 扮演：\(aiRole)") }
+        if let userRole = scene.userRole, !userRole.isEmpty { parts.append("你的角色：\(userRole)") }
+        if let level = scene.level.flatMap(SceneLevel.init(rawValue:)) { parts.append("水平：\(level.rawValue) · \(level.title)") }
+        if let goals = scene.goals, !goals.isEmpty { parts.append("练习重点：\(goals)") }
+        if let flow = scene.sceneFlow, !flow.isEmpty { parts.append("流程：\(flow)") }
+        return parts.isEmpty ? nil : parts.joined(separator: "　")
+    }
+
     var body: some View {
         ScrollView {
             VStack(spacing: 22) {
@@ -30,6 +42,10 @@ struct SceneDetailView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("场景背景").font(.caption).foregroundStyle(AppTheme.secondaryText)
                     Text(scene.sceneDescription).font(.system(size: 15)).foregroundStyle(.white.opacity(0.88)).lineSpacing(5)
+                    if let detail = sceneDetailText {
+                        Divider().overlay(AppTheme.separator)
+                        Text(detail).font(.caption).foregroundStyle(AppTheme.secondaryText).lineSpacing(4)
+                    }
                 }.padding(18).frame(maxWidth: .infinity, alignment: .leading).appCard()
 
                 if let buddy {

@@ -61,6 +61,7 @@
 		C623192785F3407679E15AD1 /* AppModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35326D52EEF5FBC788F5B91F /* AppModels.swift */; };
 		C8590DDD350D1945464B772A /* ggml-cpp.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C5052F11755DDCEA4302A2B /* ggml-cpp.h */; };
 		CF542181339AEAF0399656D2 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF35ACDADAA83F785FB8570 /* BundleExtension.swift */; };
+		D2DF872F20A3840348A6830F /* GrammarHintEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DA63A9B8F95BBC922132FF /* GrammarHintEngine.swift */; };
 		D2F61F1466DF28B1419B8EB1 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8E21297C36F151180780C5BF /* module.modulemap */; };
 		D9F3D833CB7030D763BBD457 /* CreateSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9744218B67C7535200A49BD /* CreateSceneView.swift */; };
 		DCAE9C0C4B5E191CD6150ECB /* whisper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D6D049DEB243C53C5B278325 /* whisper.h */; };
@@ -185,6 +186,7 @@
 		16CFC5076AD56B98801A536C /* LocalDataMaintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataMaintenance.swift; sourceTree = "<group>"; };
 		1B75974F437437E1EAC11639 /* ggml-alloc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-alloc.h"; sourceTree = "<group>"; };
 		246E11BF1196C6D1061B214F /* ggml-openvino.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-openvino.h"; sourceTree = "<group>"; };
+		27DA63A9B8F95BBC922132FF /* GrammarHintEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarHintEngine.swift; sourceTree = "<group>"; };
 		29FCCEF3A7B758DA5FF25481 /* ggml-metal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ggml-metal.h"; sourceTree = "<group>"; };
 		31FEAD9E990644E21DE35EF1 /* SessionEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionEndView.swift; sourceTree = "<group>"; };
 		330A4EF20BBB619C937996ED /* libWhisperCpp.a */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = archive.ar; path = libWhisperCpp.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -433,6 +435,7 @@
 		9754B494F53277E080E0D233 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				27DA63A9B8F95BBC922132FF /* GrammarHintEngine.swift */,
 				C1B6DA5BFBDAA1CB564FCE05 /* OfflineServices.swift */,
 				33949DF7710BDD23B9489E95 /* LLM */,
 				7FD18DE222780024B343012C /* Speech */,
@@ -738,6 +741,7 @@
 				EB928A0A7F3E6FB9C913E916 /* ChatViewModel.swift in Sources */,
 				D9F3D833CB7030D763BBD457 /* CreateSceneView.swift in Sources */,
 				C200E45F3226C215606721C9 /* CreateSceneViewModel.swift in Sources */,
+				D2DF872F20A3840348A6830F /* GrammarHintEngine.swift in Sources */,
 				C129E20415482C7AE204B021 /* LocalDataMaintenance.swift in Sources */,
 				15CE3618DF7932349B715DD6 /* OfflineServices.swift in Sources */,
 				3E882D393EC003F4A390BCDD /* ProfileView.swift in Sources */,

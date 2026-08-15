@@ -12,6 +12,11 @@ final class CreateSceneViewModel: ObservableObject {
     @Published var personality = "友好、耐心"
     @Published var correctionLevel: CorrectionLevel = .moderate
     @Published var description = ""
+    @Published var flow = ""
+    @Published var userRole = ""
+    @Published var aiRole = ""
+    @Published var level: SceneLevel?
+    @Published var goals = ""
     @Published var selectedSeriesID: UUID?
 
     let languages = ["English", "日本語", "한국어", "中文", "Français", "Español"]
@@ -42,7 +47,14 @@ final class CreateSceneViewModel: ObservableObject {
             buddyID = buddy.id
         }
         guard let buddyID else { return }
-        let scene = Scene(name: name, coverImage: coverIcon, language: language, description: description, buddyId: buddyID, seriesId: selectedSeriesID)
+        func nonempty(_ value: String) -> String? {
+            let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+            return trimmed.isEmpty ? nil : trimmed
+        }
+        let scene = Scene(name: name, coverImage: coverIcon, language: language, description: description,
+                          flow: nonempty(flow), userRole: nonempty(userRole), aiRole: nonempty(aiRole),
+                          level: level?.rawValue, goals: nonempty(goals),
+                          buddyId: buddyID, seriesId: selectedSeriesID)
         context.insert(scene)
         if let selectedSeriesID,
            let series = try? context.fetch(FetchDescriptor<Series>()).first(where: { $0.id == selectedSeriesID }) {

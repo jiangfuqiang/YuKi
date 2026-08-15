@@ -32,6 +32,23 @@ enum CorrectionLevel: String, Codable, CaseIterable, Identifiable {
 
 enum MessageRole: String, Codable { case user, assistant }
 
+/// Self-assessed proficiency for a scene. Only a coarse hint for the prompt:
+/// the small model follows "match the user's level" far more reliably than it
+/// can estimate the level by itself.
+enum SceneLevel: String, Codable, CaseIterable, Identifiable {
+    case a1 = "A1", a2 = "A2", b1 = "B1", b2 = "B2", c1 = "C1"
+    var id: String { rawValue }
+    var title: String {
+        switch self {
+        case .a1: "入门"
+        case .a2: "初级"
+        case .b1: "中级"
+        case .b2: "中高级"
+        case .c1: "高级"
+        }
+    }
+}
+
 @Model
 final class Scene {
     @Attribute(.unique) var id: UUID
@@ -39,6 +56,18 @@ final class Scene {
     var coverImage: String
     var language: String
     var sceneDescription: String
+    /// Optional scene flow, e.g. "打招呼 → 点饮料 → 结账". Injected into the
+    /// system prompt so the small model follows a known progression instead of
+    /// steering the whole conversation by itself.
+    var sceneFlow: String?
+    /// The user's role inside the scene, e.g. "顾客" / "面试者".
+    var userRole: String?
+    /// The role the buddy plays inside the scene, e.g. "店员" / "面试官".
+    var aiRole: String?
+    /// SceneLevel raw value; nil means "not specified".
+    var level: String?
+    /// What the user wants to practice, e.g. "点餐用语、过去时".
+    var goals: String?
     var buddyId: UUID
     var seriesId: UUID?
     var createdAt: Date
@@ -46,6 +75,8 @@ final class Scene {
     var statusRaw: String
 
     init(id: UUID = UUID(), name: String, coverImage: String, language: String, description: String,
+         flow: String? = nil, userRole: String? = nil, aiRole: String? = nil,
+         level: String? = nil, goals: String? = nil,
          buddyId: UUID, seriesId: UUID? = nil, createdAt: Date = .now,
          lastChatTime: Date? = nil, status: SceneStatus = .active) {
         self.id = id
@@ -53,6 +84,11 @@ final class Scene {
         self.coverImage = coverImage
         self.language = language
         self.sceneDescription = description
+        self.sceneFlow = flow
+        self.userRole = userRole
+        self.aiRole = aiRole
+        self.level = level
+        self.goals = goals
         self.buddyId = buddyId
         self.seriesId = seriesId
         self.createdAt = createdAt

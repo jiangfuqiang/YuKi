@@ -152,7 +152,14 @@ final class ChatViewModel: ObservableObject {
                                             relationship: buddy?.relationship ?? .friend,
                                             personality: buddy?.personality ?? "友好",
                                             correctionLevel: buddy?.correctionLevel ?? .moderate,
-                                            recentMessages: Array(recentMessages))
+                                            recentMessages: Array(recentMessages),
+                                            flow: scene.sceneFlow ?? "",
+                                            userRole: scene.userRole ?? "",
+                                            aiRole: scene.aiRole ?? "",
+                                            level: scene.level ?? "",
+                                            goals: scene.goals ?? "",
+                                            recentMistakes: recentMistakes(for: scene),
+                                            grammarHints: GrammarHintEngine.hints(for: text, language: scene.language))
             let response = try await llm.respond(to: text, scene: sceneContext)
             try Task.checkCancellation()
             add(role: .assistant, content: response.content, correction: response.correction)
@@ -174,6 +181,30 @@ final class ChatViewModel: ObservableObject {
         context.insert(message)
         messages.append(message)
         try? context.save()
+    }
+
+    /// The learner's recent recurring mistakes in this scene ("原句→更好的表达"),
+    /// newest first, deduplicated. Fed back into the system prompt so the buddy
+    /// can naturally create opportunities to practice exactly these points.
+    private func recentMistakes(for scene: Scene) -> [String] {
+        guard let context else { return [] }
+        let sceneId = scene.id
+        let sessionDescriptor = FetchDescriptor<ChatSession>(predicate: #Predicate { $0.sceneId == sceneId })
+        let sessionIds = Set(((try? context.fetch(sessionDescriptor)) ?? []).map(\.id))
+        guard !sessionIds.isEmpty else { return [] }
+        var messageDescriptor = FetchDescriptor<Message>(sortBy: [SortDescriptor(\.timestamp, order: .reverse)])
+        messageDescriptor.fetchLimit = 100
+        let recentMessages = (try? context.fetch(messageDescriptor)) ?? []
+        var seen = Set<String>()
+        var mistakes: [String] = []
+        for message in recentMessages where sessionIds.contains(message.sessionId) {
+            guard let correction = message.correction,
+                  !correction.isEmpty,
+                  seen.insert(correction).inserted else { continue }
+            mistakes.append(correction)
+            if mistakes.count == 5 { break }
+        }
+        return mistakes
     }
 
     private static func welcomeMessage(language: String) -> String {
