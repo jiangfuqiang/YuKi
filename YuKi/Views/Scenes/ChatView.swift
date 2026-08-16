@@ -17,7 +17,7 @@ struct ChatView: View {
                     LazyVStack(spacing: 14) {
                         sceneContext
                         ForEach(model.messages) { message in
-                            MessageBubble(message: message, buddyName: buddy?.name ?? "AI", playback: playback, showsCorrection: false,
+                            MessageBubble(message: message, buddyName: buddy?.name ?? "AI", playback: playback,
                                           isSpeaking: model.speakingMessageID == message.id,
                                           onToggleSpeech: message.role == .assistant ? { model.toggleReplyAudio(message, scene: scene, buddy: buddy) } : nil)
                                 .id(message.id)
@@ -211,12 +211,33 @@ private struct RecordButton: View {
     }
 }
 
+/// Renders a structured correction "原句→更好的表达": the original struck
+/// through and the suggestion emphasised. Falls back to plain text when the
+/// model produced an unstructured correction.
+private struct CorrectionView: View {
+    let correction: String
+
+    var body: some View {
+        let parts = correction.components(separatedBy: "→").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+        if parts.count == 2, !parts[0].isEmpty, !parts[1].isEmpty {
+            VStack(alignment: .leading, spacing: 3) {
+                Text(parts[0])
+                    .font(.system(size: 12)).foregroundStyle(.white.opacity(0.45)).strikethrough()
+                Text(parts[1])
+                    .font(.system(size: 12, weight: .medium)).foregroundStyle(.white.opacity(0.85))
+            }
+        } else {
+            Text(correction).font(.system(size: 12)).foregroundStyle(.white.opacity(0.7))
+        }
+    }
+}
+
 struct MessageBubble: View {
     let message: Message
     let buddyName: String
     @ObservedObject var playback: AudioPlaybackService
-    /// Mid-chat bubbles hide corrections so practice is never interrupted;
-    /// transcript/record views keep them visible.
+    /// Transcript/record views and the active chat both show corrections
+    /// inline; the flag remains for surfaces that should stay clean.
     var showsCorrection = true
     /// Assistant-reply TTS replay; nil hides the button (e.g. transcripts).
     var isSpeaking = false
@@ -232,7 +253,7 @@ struct MessageBubble: View {
                     Divider().overlay(Color.white.opacity(0.12))
                     HStack(alignment: .top, spacing: 6) {
                         Image(systemName: "sparkles").font(.caption).foregroundStyle(AppTheme.purpleLight)
-                        Text(correction).font(.system(size: 12)).foregroundStyle(.white.opacity(0.7))
+                        CorrectionView(correction: correction)
                     }
                 }
                 HStack(spacing: 5) {

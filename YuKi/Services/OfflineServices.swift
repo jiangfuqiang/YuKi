@@ -154,7 +154,7 @@ struct LocalLLMAdapter: LocalLLMResponding {
         case .light:
             correctionInstruction = "不纠正用户表达，不要输出[[correction]]标记。"
         case .moderate:
-            correctionInstruction = "仅在用户的表达会造成误解时，记录最值得注意的一处。"
+            correctionInstruction = "本轮有明显表达问题时，记录最值得注意的一处。"
         case .detailed:
             correctionInstruction = "本轮有值得改进的表达时，记录最值得改进的一处。"
         }
@@ -183,7 +183,7 @@ struct LocalLLMAdapter: LocalLLMResponding {
         场景资料：“\(scene.name)”；\(scene.description.isEmpty ? "自由聊天。" : scene.description) 场景资料只用于理解，绝不向用户复述。
         这是沉浸式真实对话，不是语言课程。先结合场景和最近对话理解用户此刻真正想做什么；如果用户让你扮演某个角色或帮他做某件事，立即进入该角色并配合。
         必须记住并遵守对话里已经确认的每项事实、偏好和选择，不遗漏、不冲突，也不要再次询问已经回答过的问题。直接回答用户最后一条消息中的实际问题，给出具体、可执行的回应，并自然推进一步。不要只回复“可以、不错、推荐试试”等空话，不安排课程或任务。只用\(scene.language)，通常回复2至3句。
-        \(guidance)\(correctionInstruction) 如需记录，在回复末尾另起一行，只输出一行[[correction]]用户的原句→更自然的表达[[/correction]]，不要解释、不要换行、不要输出其他标记；纠错记录不会在对话中打断用户，回复正文里不要提及纠错。
+        \(guidance)\(correctionInstruction) 如需记录，在回复末尾另起一行，只输出一行[[correction]]用户的原句→更自然的表达[[/correction]]，不要解释、不要换行、不要输出其他标记；纠错会由系统自动展示给用户，回复正文里不要提及或复述纠错内容。
         只输出给用户看的回复，不要JSON、Markdown、分析过程、说明、emoji、表情符号或颜文字。
         <|im_end|>
         """
